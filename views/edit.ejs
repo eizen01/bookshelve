@@ -1,0 +1,22 @@
+<%- include('partials/header.ejs'); -%>
+
+    <div>
+        <% if (locals.detail){ %>
+            <form class='edit' action="/edit/<%= detail.id  %>" method="post">
+                <h1 >
+                    <%= detail.name %>
+                </h1>
+                <input value="<%= detail.name %>" name="name" />
+                <input value="<%= detail.rating %>" name="rating" />
+                <input value="<%= detail.isbn %>" name="isbn" />
+                <input value="<%= detail.writer %>" name="writer" />
+                <input value="<%= detail.introduction %>" name="introduction" />
+                <input value="<%= detail.detail %>" name="detail" hidden />
+                <button type="submit">submit</button>
+            </form>
+            <% } else {%>
+                <h1> No detail value here </h1>
+                <%}%>
+    </div>
+
+    <%- include('partials/footer.ejs'); -%>

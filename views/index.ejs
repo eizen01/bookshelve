@@ -1,0 +1,95 @@
+<!-- <%- include('partials/header.ejs'); -%> -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+</head>
+
+<body style="padding-left: 16rem;
+    padding-right: 16rem;
+    margin: 0;">
+
+
+    <div class="heading">
+        <h1 id="title" style=" display: flex;
+    align-items: center;
+    flex-direction: column;">
+            <%# Heading of the projecct %>
+                LibraryX
+        </h1>
+
+        <div class="my_intro" style="display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: flex-end;">
+            <%# My introduction %>
+                <!-- <img src="#" aria-placeholder="<%= name %>"> -->
+                <!-- <%= introduction %> -->
+                <div class="connect">
+                    <button><a id="linkedin" href="#">Linkedin</a></button>
+                    <button><a href="#">Twitter</a></button>
+                    <button><a href="#">CV</a></button>
+                </div>
+
+                <form action="/add" method="get" id="add_newbook" style="margin: 0;">
+                    <button type="submit">ADD NEW BOOK</button>
+                </form>
+        </div>
+        <hr />
+        <div class="booklist">
+            <% for(let book of bookList){%>
+                <div class="book" style="display: flex;
+            flex-direction: row;
+            align-items: stretch;
+            justify-content: center;">
+                    <div class="stars" style="    padding-right: 1.5rem;
+                display: flex;
+                flex-direction: column;">
+                        <a href="/bookdetails/<%= book.id %>/<%= encodeURIComponent(book.name) %>" class="bookcover">
+                            <img src="https://covers.openlibrary.org/b/isbn/<%= book.isbn %>-M.jpg"
+                                alt="<%= book.name %>"></a>
+                        <h2 style="margin: 0;">
+                            <%= book.rating %>/10
+                        </h2>
+                        <form action="/edit/id:<%=book.id%>" method="get" style="margin: 0;">
+                            <input type="hidden" name="detail" value="<%= book %>">
+                            <button type="submit">Edit</button>
+                        </form>
+                        <form action="/delete/id:<%= book.id %>" method="post" style="margin: 0">
+                            <button>Delete</button>
+                        </form>
+                    </div>
+                    <div class="intro_and_book" style="    display: flex;
+                flex-direction: column;
+                justify-content: center;">
+                        <div class="writer" style="    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;">
+                            <h2 style="margin: 0;">
+                                <%= book.writer %>
+                            </h2>
+                            <h2 style="margin: 0;">
+                                <%= book.name %>
+                            </h2>
+                        </div>
+                        <div>
+                            <h3>
+                                <%= book.introduction %>
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <% } %>
+        </div>
+    </div>
+</body>
+
+</html>
+<%- include('partials/footer.ejs'); -%>

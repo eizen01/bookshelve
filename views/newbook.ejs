@@ -1,0 +1,36 @@
+<%- include('partials/header.ejs'); -%>
+
+    <div class="newbook">
+        <form class='addNewbook' action="/addNewbook" method="post">
+            <h1>ADD NEW BOOK</h1>
+            <div id="name">
+                <label for="bookName">Name: </label>
+                <input value=" " placeholder="name" name="name" required />
+            </div>
+            <div id="rating">
+                <label for="bookName">Rating: </label>
+                <input value=" " placeholder="Rating out of 10" name="rating" />
+            </div>
+            <div id="isbn">
+                <label for="bookName">ISBN: </label>
+                <input value=" " placeholder="ISBN of book" name="isbn" required />
+            </div>
+            <div id="writer">
+                <label for="bookName">Writer: </label>
+                <input value=" " placeholder="Writer of book" name="writer" required />
+            </div>
+            <div id="introduction">
+                <label for="bookName">Introduction: </label>
+                <input value=" " placeholder="Introduction of the book" name="introduction" required />
+            </div>
+            <div id="Summery">
+                <label for="bookName">Summery: </label>
+                <input value=" " placeholder="Summery of the book" name="detail" required />
+            </div>
+            <div id="submitnewbook">
+                <button type="submit">submit</button>
+            </div>
+
+        </form>
+    </div>
+    <%- include('partials/footer.ejs'); -%>
